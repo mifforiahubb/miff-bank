@@ -137,8 +137,10 @@ async def editRate(interaction: discord.Interaction, type: RobuxType, rate: floa
     key = type.value[1]
 
     cursor.execute("""
-    INSERT OR REPLACE INTO rates (key, value)
+    INSERT INTO rates (key, value)
     VALUES (%s, %s)
+    ON CONFLICT (key)
+    DO UPDATE SET value = EXCLUDED.value
     """, (key, str(rate)))
 
     db.commit()
