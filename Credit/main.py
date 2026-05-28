@@ -124,6 +124,32 @@ async def logSpending(interaction: discord.Interaction, user: discord.Member, am
 
     await interaction.response.send_message(embed = embed)
 
+@client.tree.command(name = "editlog", description = "Edit customer total spending", guild = GUILD_ID)
+@adminOnly()
+async def editSpending(interaction: discord.Interaction, user: discord.Member, amount: str):
+
+    try:
+        amount = float(amount)
+    except ValueError:
+        await interaction.response.send_message("❌ Invalid amount.",ephemeral=True)
+        return
+
+    validateUser(user)
+
+    cursor.execute("""
+    UPDATE users
+    SET total_spending = %s
+    WHERE user_id = %s
+    """, (amount, str(user.id)))
+
+    db.commit()
+
+    embed = discord.Embed(title = "✅Log Edit Successful", colour = discord.Colour.green())
+    embed.add_field(name = "User", value = user.mention, inline = False)
+    embed.add_field(name = "New Total Spending", value = f"RM {amount:,.2f}", inline = False)
+
+    await interaction.response.send_message(embed = embed)
+
 @client.tree.command(name = "credit", description = "Add/Remove customer credits", guild = GUILD_ID)
 @adminOnly()
 async def manageCredits(interaction: discord.Interaction, action: ActionType, user: discord.Member, amount: str):
