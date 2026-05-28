@@ -115,7 +115,7 @@ def convert(amount: str, rateType: str):
     if rate is None:
         return None, None
 
-    return value, value * rate
+    return value, value * rate / 1000
 
 def convertResult(robux: int, value: float, type: RobuxType):
 
@@ -123,8 +123,8 @@ def convertResult(robux: int, value: float, type: RobuxType):
                           colour = discord.Colour.pink(), 
                           timestamp = datetime.now())
     embed.add_field(name = "Type of Robux", value = type.value[0])
-    embed.add_field(name = "Rate", value = getRate(type.value[1]))
-    embed.add_field(name = "Robux Amount", value = f"{robux:,}", inline = False)
+    embed.add_field(name = "Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx")
+    embed.add_field(name = "Robux Amount", value = f"{robux:,} rbx", inline = False)
     embed.add_field(name = "Amount to Pay", value = f"RM {value:.2f}", inline = False)
     embed.set_footer(text = ":mifforia hubb")
     return embed
