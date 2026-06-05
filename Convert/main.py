@@ -122,8 +122,8 @@ def convertResult(robux: int, value: float, type: RobuxType):
     embed = discord.Embed(title = "💰 Price Calculation Result", 
                           colour = discord.Colour.pink(), 
                           timestamp = datetime.now())
-    embed.add_field(name = "Type of Robux", value = type.value[0])
-    embed.add_field(name = "Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx")
+    embed.add_field(name = "Type of Robux", value = type.value[0], inline = True)
+    embed.add_field(name = "Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx", inline = True)
     embed.add_field(name = "Robux Amount", value = f"{robux:,} rbx", inline = False)
     embed.add_field(name = "Amount to Pay", value = f"RM {value:.2f}", inline = False)
     embed.set_footer(text = ":mifforia hubb")
@@ -170,10 +170,7 @@ async def gf(interaction: discord.Interaction, amount: str):
         await interaction.response.send_message("❌ Rate not set.", ephemeral = True)
         return
     
-    await interaction.response.send_message(
-        embed = convertResult(value, myr, type), 
-        ephemeral = True
-        )
+    await interaction.response.send_message(embed = convertResult(value, myr, type))
 
 @client.tree.command(name="gp", description = "Gamepass Conversion", guild = GUILD_ID)
 async def gp(interaction: discord.Interaction, amount: str):
@@ -185,10 +182,8 @@ async def gp(interaction: discord.Interaction, amount: str):
         await interaction.response.send_message("❌ Rate not set.", ephemeral = True)
         return
 
-    await interaction.response.send_message(
-        embed = convertResult(value, myr, type),
-        ephemeral = True
-        )
+    await interaction.response.send_message(embed = convertResult(value, myr, type)
+)
 
 @client.tree.command(name="igg", description = "In-Game Gifting Conversion", guild = GUILD_ID)
 async def igg(interaction: discord.Interaction, amount: str):
@@ -200,9 +195,7 @@ async def igg(interaction: discord.Interaction, amount: str):
         await interaction.response.send_message("❌ Rate not set.", ephemeral = True)
         return
 
-    await interaction.response.send_message(
-        embed = convertResult(value, myr, type),
-        ephemeral = True)
+    await interaction.response.send_message(embed = convertResult(value, myr, type))
     
 #PERMISSION ERROR HANDLING
 @client.tree.error
