@@ -120,7 +120,7 @@ def convert(amount: str, rateType: str):
 def convertResult(robux: int, value: float, type: RobuxType):
 
     embed = discord.Embed(title = "💰 Price Calculation Result", 
-                          colour = discord.Colour.pink(), 
+                          colour = discord.Colour.white(), 
                           timestamp = datetime.now())
     embed.add_field(name = "Type of Robux", value = type.value[0], inline = True)
     embed.add_field(name = "Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx", inline = True)
@@ -147,7 +147,7 @@ async def editRate(interaction: discord.Interaction, type: RobuxType, rate: floa
 
     embed = discord.Embed(
         title = "Conversion Rate Updated",
-        colour = discord.Colour.blue(),
+        colour = discord.Colour.white(),
         timestamp = datetime.now()
     )
     embed.add_field(name = "Type", value = type.value[0])
