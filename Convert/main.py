@@ -120,7 +120,7 @@ def convert(amount: str, rateType: str):
 def convertResult(robux: int, value: float, type: RobuxType):
 
     embed = discord.Embed(title = "💰 Price Calculation Result", 
-                          colour = discord.Colour.white(), 
+                          colour = discord.Colour.pink(), 
                           timestamp = datetime.now())
     embed.add_field(name = "Type of Robux", value = type.value[0], inline = True)
     embed.add_field(name = "Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx", inline = True)
@@ -147,7 +147,7 @@ async def editRate(interaction: discord.Interaction, type: RobuxType, rate: floa
 
     embed = discord.Embed(
         title = "Conversion Rate Updated",
-        colour = discord.Colour.white(),
+        colour = discord.Colour.blue(),
         timestamp = datetime.now()
     )
     embed.add_field(name = "Type", value = type.value[0])
@@ -182,8 +182,7 @@ async def gp(interaction: discord.Interaction, amount: str):
         await interaction.response.send_message("❌ Rate not set.", ephemeral = True)
         return
 
-    await interaction.response.send_message(embed = convertResult(value, myr, type)
-)
+    await interaction.response.send_message(embed = convertResult(value, myr, type))
 
 @client.tree.command(name="igg", description = "In-Game Gifting Conversion", guild = GUILD_ID)
 async def igg(interaction: discord.Interaction, amount: str):
