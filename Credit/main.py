@@ -202,14 +202,14 @@ async def manageCredits(interaction: discord.Interaction, action: ActionType, us
 
     wallet = cursor.fetchone()[0]
 
-    embed = discord.Embed(title = "Credits Updated", 
-                          colour = discord.Colour.green() if action == ActionType.add else discord.Colour.red(),
+    embed = discord.Embed(title = "🍓 MifCreds Added", 
+                          colour = discord.Colour.from_rgb(255,255,255) if action == ActionType.add else discord.Colour.red(),
                           timestamp = datetime.now())
-    embed.add_field(name = "User", value = user.mention, inline = False)
-    embed.add_field(name = f"Amount {'Added' if action == ActionType.add else 'Removed'}",
+    embed.add_field(name = "୨୧ User", value = user.mention, inline = False)
+    embed.add_field(name = f"꒰୨୧꒱ MifCreds {'Added' if action == ActionType.add else 'Deducted'}",
                     value = f"RM {amount:,.2f}", inline = True)
-    embed.add_field(name = "New Balance", value = f"RM {wallet:,.2f}", inline = True)
-    embed.set_footer(text = f"{'Added' if action == ActionType.add else 'Removed'} by {interaction.user.name}",
+    embed.add_field(name = "𑣲.New Balance", value = f"RM {wallet:,.2f}", inline = True)
+    embed.set_footer(text = f"{'𓏵‧₊ Added' if action == ActionType.add else '𓏵‧₊ Deducted'} by {interaction.user.name}",
                      icon_url = interaction.user.display_avatar.url)
 
     await interaction.response.send_message(embed = embed)
@@ -231,11 +231,11 @@ async def balance(interaction: discord.Interaction, user: discord.Member = None)
 
     wallet = cursor.fetchone()[0]
 
-    embed = discord.Embed(title = "💰 Balance Info", colour = discord.Colour.gold())
+    embed = discord.Embed(title = "♡ Mif Wallet", colour = discord.Colour.from_rgb(255,255,255))
     embed.set_thumbnail(url = user.display_avatar.url)
-    embed.add_field(name = "Username", value = user.mention, inline = True)
-    embed.add_field(name = "Credit Balance", value = f"RM {wallet:,.2f} ", inline = True)
-    embed.set_footer(text = f"Requested by {interaction.user.name}",
+    embed.add_field(name = "୨୧ Username", value = user.mention, inline = True)
+    embed.add_field(name = "꒰୨୧꒱ MifCred Balance", value = f"RM {wallet:,.2f} ", inline = True)
+    embed.set_footer(text = f"𓏵‧₊ Requested by {interaction.user.name}",
                      icon_url = interaction.user.display_avatar.url)
 
     await interaction.response.send_message(embed = embed)
