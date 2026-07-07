@@ -120,7 +120,7 @@ def convert(amount: str, rateType: str):
 def convertResult(robux: int, value: float, type: RobuxType):
 
     embed = discord.Embed(title = "$ Miffy Price Check $", 
-                          colour = discord.Colour.white(), 
+                          colour = discord.Colour.from_rgb(255,255,255), 
                           timestamp = datetime.now())
     embed.add_field(name = "𑣲.Order Type", value = type.value[0], inline = True)
     embed.add_field(name = "𑣲.Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx", inline = True)
