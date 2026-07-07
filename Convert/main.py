@@ -119,14 +119,14 @@ def convert(amount: str, rateType: str):
 
 def convertResult(robux: int, value: float, type: RobuxType):
 
-    embed = discord.Embed(title = "💰 Price Calculation Result", 
-                          colour = discord.Colour.pink(), 
+    embed = discord.Embed(title = "$ Miffy Price Check $", 
+                          colour = discord.Colour.white(), 
                           timestamp = datetime.now())
-    embed.add_field(name = "Type of Robux", value = type.value[0], inline = True)
-    embed.add_field(name = "Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx", inline = True)
-    embed.add_field(name = "Robux Amount", value = f"{robux:,} rbx", inline = False)
-    embed.add_field(name = "Amount to Pay", value = f"RM {value:.2f}", inline = False)
-    embed.set_footer(text = ":mifforia hubb")
+    embed.add_field(name = "𑣲.Order Type", value = type.value[0], inline = True)
+    embed.add_field(name = "𑣲.Rate", value = f"RM {getRate(type.value[1]):,.2f}/1k rbx", inline = True)
+    embed.add_field(name = "𑣲.Quantity", value = f"{robux:,} rbx", inline = False)
+    embed.add_field(name = "𑣲.Total", value = f"RM {value:.2f}", inline = False)
+    embed.set_footer(text = "𓏵‧₊ mifforia hubb")
     return embed
 
 #COMMANDS
