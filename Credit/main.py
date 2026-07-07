@@ -117,10 +117,10 @@ async def logSpending(interaction: discord.Interaction, user: discord.Member, am
 
     total = cursor.fetchone()[0]
 
-    embed = discord.Embed(title = "✅Purchase Successful", colour = discord.Colour.green())
-    embed.add_field(name = "User", value = user.mention, inline = False)
-    embed.add_field(name = "Amount Added", value = f"RM {amount:,.2f}", inline = False)
-    embed.add_field(name = "Total Spending", value = f"RM {total:,.2f}", inline = False)
+    embed = discord.Embed(title = "🐰 Purchase Successful !", colour = discord.Colour.from_rgb(255,255,255))
+    embed.add_field(name = "୨୧ User", value = user.mention, inline = False)
+    embed.add_field(name = "꒰୨୧꒱ Amount Added", value = f"RM {amount:,.2f}", inline = False)
+    embed.add_field(name = "𑣲. Total Spending", value = f"RM {total:,.2f}", inline = False)
 
     await interaction.response.send_message(embed = embed)
 
@@ -144,9 +144,9 @@ async def editSpending(interaction: discord.Interaction, user: discord.Member, a
 
     db.commit()
 
-    embed = discord.Embed(title = "✅Log Edit Successful", colour = discord.Colour.green())
-    embed.add_field(name = "User", value = user.mention, inline = False)
-    embed.add_field(name = "New Total Spending", value = f"RM {amount:,.2f}", inline = False)
+    embed = discord.Embed(title = "🐰 Log Edit Successful", colour = discord.Colour.from_rgb(255,255,255))
+    embed.add_field(name = "୨୧ User", value = user.mention, inline = False)
+    embed.add_field(name = "𑣲. New Total Spending", value = f"RM {amount:,.2f}", inline = False)
 
     await interaction.response.send_message(embed = embed)
 
@@ -202,7 +202,7 @@ async def manageCredits(interaction: discord.Interaction, action: ActionType, us
 
     wallet = cursor.fetchone()[0]
 
-    embed = discord.Embed(title = "🍓 MifCreds Added", 
+    embed = discord.Embed(title = "🍓 MifCreds Updated", 
                           colour = discord.Colour.from_rgb(255,255,255) if action == ActionType.add else discord.Colour.red(),
                           timestamp = datetime.now())
     embed.add_field(name = "୨୧ User", value = user.mention, inline = False)
